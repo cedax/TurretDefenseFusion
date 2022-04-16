@@ -8,6 +8,13 @@ public class DetectarClick : MonoBehaviour
         if (Input.GetMouseButtonDown(0)){
             IntantiateOnPosition(Input.mousePosition);
         }
+
+        if (Input.touchCount > 0){
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began){
+                IntantiateOnPosition(touch.position);
+            }
+        }
     }
 
     void IntantiateOnPosition(Vector3 mousePos){

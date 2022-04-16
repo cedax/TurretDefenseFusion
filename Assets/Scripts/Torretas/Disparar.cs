@@ -7,9 +7,16 @@ public class Disparar : MonoBehaviour
     [SerializeField] [Range(0.1f, 10)] private float velocidad = 1;
     [SerializeField] private float grados;
     private float VelocidadAnterior;
+    private GameObject _target;
+    public GameObject Target => _target;
+    private Rotacion rotacion;
 
     private void Start() {
         InvokeRepeating("DispararBala", 0, velocidad);
+    }
+
+    private void Awake() {
+        rotacion = GetComponent<Rotacion>();
     }
 
     private void Update() {
@@ -18,13 +25,28 @@ public class Disparar : MonoBehaviour
             InvokeRepeating("DispararBala", 0, velocidad);
             VelocidadAnterior = velocidad;
         }
+
+        if(_target == null){
+            Debug.Log("No hay target, voy a elegir uno");
+            ElegirEnemigo();
+        }
+
+        rotacion.RotarTorreta(_target);
+    }
+
+    private void ElegirEnemigo(){
+        try{
+            int index = Random.Range(0, ControlEnemigos.Instancia.Enemigos.Count);
+            _target = ControlEnemigos.Instancia.Enemigos[index];
+            Debug.Log("Elegi el target: " + index + " para atacar");
+        }
+        catch (System.Exception){
+            Debug.Log("Aun no hay enemigos para atacar");
+        }
     }
 
     private void DispararBala(){
-        try{
-            int index = Random.Range(0, ControlEnemigos.Instancia.Enemigos.Count);
-            GameObject _target = ControlEnemigos.Instancia.Enemigos[index];
-
+        if(_target != null) {
             Vector3 objetivoRotation = new Vector3(_target.transform.position.x, _target.transform.position.y + 2f, _target.transform.position.z) - transform.position;
             Quaternion ObjetivoDireccionQuaternion = Quaternion.LookRotation(objetivoRotation);
             GameObject bala = Instantiate(_bala, transform.position, ObjetivoDireccionQuaternion);
@@ -34,12 +56,8 @@ public class Disparar : MonoBehaviour
             angles.y += grados;
             objHijoBala.rotation = Quaternion.Euler(angles);
 
-            bala.GetComponent<Rigidbody>().AddForce(bala.transform.forward * fuerzaBala);
+            objHijoBala.GetComponent<Rigidbody>().AddForce(bala.transform.forward * fuerzaBala);
             Destroy(bala, 5);
-        }
-        catch (System.Exception ex){
-            Debug.Log(ex.Message);
-            Debug.Log("Aun no hay enemigos para atacar");
         }
     }
 
