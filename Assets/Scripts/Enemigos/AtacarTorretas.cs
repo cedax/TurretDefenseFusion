@@ -5,7 +5,7 @@ public class AtacarTorretas : MonoBehaviour {
     private int indexTorretaObjetivo;
     private GameObject torretaObjetivo;
 
-    private void Start() {
+    private void Start(){
         ObtenerTorretaObjetivo();
     }
 
@@ -18,7 +18,7 @@ public class AtacarTorretas : MonoBehaviour {
         }
     }
 
-    private void Update() {
+    private void FixedUpdate(){
         transform.position = Vector3.MoveTowards(transform.position, new Vector3(torretaObjetivo.transform.position.x, 1, torretaObjetivo.transform.position.z), velocidad);
     }
 }

@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 public class SistemaSpawn : MonoBehaviour
 {
@@ -40,6 +39,7 @@ public class SistemaSpawn : MonoBehaviour
                                                 areaSpawn.transform.position.y,
                                                 Random.Range(areaSpawn.transform.position.z - areaSpawn.transform.localScale.z / 2, areaSpawn.transform.position.z + areaSpawn.transform.localScale.z / 2));
                 GameObject enemigo = Instantiate(modelosEnemigos[Random.Range(0, modelosEnemigos.Length)], posicion, Quaternion.identity);
+                enemigo.transform.Rotate(new Vector3(0, 90, 0));
                 ControlEnemigos.Instancia.Enemigos.Add(enemigo);
             }
         }

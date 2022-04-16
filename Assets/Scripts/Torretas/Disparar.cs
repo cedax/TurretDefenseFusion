@@ -6,10 +6,11 @@ public class Disparar : MonoBehaviour
     [SerializeField] [Range(0, 7500)] private int fuerzaBala = 3000;
     [SerializeField] [Range(0.1f, 10)] private float velocidad = 1;
     [SerializeField] private float grados;
-    private float VelocidadAnterior;
+    private float VelocidadAnterior = 1;
     private GameObject _target;
     public GameObject Target => _target;
     private Rotacion rotacion;
+    private AudioTorreta audioTorreta;
 
     private void Start() {
         InvokeRepeating("DispararBala", 0, velocidad);
@@ -17,6 +18,7 @@ public class Disparar : MonoBehaviour
 
     private void Awake() {
         rotacion = GetComponent<Rotacion>();
+        audioTorreta = GetComponent<AudioTorreta>();
     }
 
     private void Update() {
@@ -26,10 +28,7 @@ public class Disparar : MonoBehaviour
             VelocidadAnterior = velocidad;
         }
 
-        if(_target == null){
-            Debug.Log("No hay target, voy a elegir uno");
-            ElegirEnemigo();
-        }
+        if(_target == null){ ElegirEnemigo(); }
 
         rotacion.RotarTorreta(_target);
     }
@@ -38,10 +37,9 @@ public class Disparar : MonoBehaviour
         try{
             int index = Random.Range(0, ControlEnemigos.Instancia.Enemigos.Count);
             _target = ControlEnemigos.Instancia.Enemigos[index];
-            Debug.Log("Elegi el target: " + index + " para atacar");
         }
         catch (System.Exception){
-            Debug.Log("Aun no hay enemigos para atacar");
+            // Debug.Log("Aun no hay enemigos para atacar");
         }
     }
 
@@ -57,6 +55,9 @@ public class Disparar : MonoBehaviour
             objHijoBala.rotation = Quaternion.Euler(angles);
 
             objHijoBala.GetComponent<Rigidbody>().AddForce(bala.transform.forward * fuerzaBala);
+
+            audioTorreta.Disparo();
+
             Destroy(bala, 5);
         }
     }
