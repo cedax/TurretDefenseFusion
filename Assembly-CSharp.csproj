@@ -36,12 +36,16 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\UI\ControlCalidad.cs" />
      <Compile Include="Assets\Scripts\UI\DetectarClick.cs" />
      <Compile Include="Assets\Scripts\UI\ControlTorretas.cs" />
      <Compile Include="Assets\Scripts\Extras\Singleton.cs" />
      <Compile Include="Assets\Scripts\UI\ControlSloths.cs" />
      <Compile Include="Assets\Scripts\Extras\GizmoPivote.cs" />
+     <Compile Include="Assets\Scripts\UI\IniciarJuego.cs" />
      <Compile Include="Assets\Scripts\Torretas\Disparar.cs" />
+     <Compile Include="Assets\Scripts\Torretas\AudioTorreta.cs" />
+     <Compile Include="Assets\Scripts\Enemigos\SistemaParticulas.cs" />
      <Compile Include="Assets\Scripts\Torretas\Balas.cs" />
      <Compile Include="Assets\Scripts\Extras\FPS.cs" />
      <Compile Include="Assets\Scripts\Enemigos\SistemaSpawn.cs" />
@@ -49,8 +53,8 @@
      <Compile Include="Assets\Scripts\Enemigos\ControlEnemigos.cs" />
      <Compile Include="Assets\Scripts\Enemigos\Vida.cs" />
      <Compile Include="Assets\Scripts\Torretas\Rotacion.cs" />
-     <Compile Include="Assets\Scripts\Torretas\AudioTorreta.cs" />
-     <Compile Include="Assets\Scripts\Enemigos\SistemaParticulas.cs" />
+     <Compile Include="Assets\Scripts\UI\MenuPausa.cs" />
+     <Compile Include="Assets\Scripts\UI\ControlMenu.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
@@ -690,12 +694,6 @@
     <Reference Include="Unity.VSCode.Editor">
         <HintPath>C:\Users\sedax\Desktop\TowerLine\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Postprocessing.Runtime">
-        <HintPath>C:\Users\sedax\Desktop\TowerLine\Library\ScriptAssemblies\Unity.Postprocessing.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Shared.Editor">
-        <HintPath>C:\Users\sedax\Desktop\TowerLine\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
         <HintPath>C:\Users\sedax\Desktop\TowerLine\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -707,9 +705,6 @@
     </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Model">
         <HintPath>C:\Users\sedax\Desktop\TowerLine\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline.Editor">
-        <HintPath>C:\Users\sedax\Desktop\TowerLine\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
         <HintPath>C:\Users\sedax\Desktop\TowerLine\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
@@ -726,6 +721,9 @@
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
         <HintPath>C:\Users\sedax\Desktop\TowerLine\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+        <HintPath>C:\Users\sedax\Desktop\TowerLine\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
         <HintPath>C:\Users\sedax\Desktop\TowerLine\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
     </Reference>
@@ -741,23 +739,32 @@
     <Reference Include="Unity.Rider.Editor">
         <HintPath>C:\Users\sedax\Desktop\TowerLine\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.TestTools.CodeCoverage.Editor">
-        <HintPath>C:\Users\sedax\Desktop\TowerLine\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
         <HintPath>C:\Users\sedax\Desktop\TowerLine\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow">
         <HintPath>C:\Users\sedax\Desktop\TowerLine\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VisualScripting.State">
-        <HintPath>C:\Users\sedax\Desktop\TowerLine\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.VisualScripting.Core">
         <HintPath>C:\Users\sedax\Desktop\TowerLine\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
     </Reference>
     <Reference Include="Unity.EditorCoroutines.Editor">
         <HintPath>C:\Users\sedax\Desktop\TowerLine\Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Postprocessing.Runtime">
+        <HintPath>C:\Users\sedax\Desktop\TowerLine\Library\ScriptAssemblies\Unity.Postprocessing.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Shared.Editor">
+        <HintPath>C:\Users\sedax\Desktop\TowerLine\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline.Editor">
+        <HintPath>C:\Users\sedax\Desktop\TowerLine\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TestTools.CodeCoverage.Editor">
+        <HintPath>C:\Users\sedax\Desktop\TowerLine\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.State">
+        <HintPath>C:\Users\sedax\Desktop\TowerLine\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

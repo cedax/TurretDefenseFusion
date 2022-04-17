@@ -3,10 +3,10 @@ using UnityEngine;
 public class AudioTorreta : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] [Range(0.00f, 1f)] private float volumen;
+    private float volumen;
 
     private void Start() {
-        volumen = 0.10f;
+        volumen = 0.25f;
         audioSource.volume = volumen;
     }
 

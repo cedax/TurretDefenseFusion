@@ -5,6 +5,8 @@ public class DetectarClick : MonoBehaviour
     [SerializeField] private GameObject torretaPrefab;
 
     void Update(){
+        if(ControlMenu.Instancia.Pausa == true) { return; }
+
         if (Input.GetMouseButtonDown(0)){
             IntantiateOnPosition(Input.mousePosition);
         }
