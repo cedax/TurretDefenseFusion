@@ -27,9 +27,10 @@ public class DetectarClick : MonoBehaviour
                 if(ControlTorretas.Instancia.Torretas[index] != null){
                     Debug.Log(ControlTorretas.Instancia.Torretas[index].transform.position);
                 }else {
-                    GameObject torreta = Instantiate(torretaPrefab, new Vector3(info.collider.transform.position.x-1.11f, info.collider.transform.position.y, info.collider.transform.position.z+0.2181381f), Quaternion.identity);
+                    float offset = 0f;
+                    if(index <= 4){ offset = 0.31909786f; }
+                    GameObject torreta = Instantiate(torretaPrefab, new Vector3(info.collider.transform.position.x+offset, info.collider.transform.position.y-2f, info.collider.transform.position.z-0.40f), Quaternion.identity);
                     ControlTorretas.Instancia.Torretas[index] = torreta;
-                    Debug.Log(ControlTorretas.Instancia.Torretas[index].transform.position);
                 }
             }
         }

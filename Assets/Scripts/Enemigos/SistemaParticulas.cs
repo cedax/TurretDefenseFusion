@@ -11,7 +11,7 @@ public class SistemaParticulas : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        if(vida.VidaActual <= 50){
+        if(vida.VidaActual <= 0){
             _particulasDeMuerte.Play();
             GameObject meshObject = transform.parent.gameObject.transform.parent.gameObject;
             meshObject.SetActive(false);

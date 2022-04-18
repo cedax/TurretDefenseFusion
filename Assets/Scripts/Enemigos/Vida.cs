@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Vida : MonoBehaviour {
     [SerializeField] private float vidaInicial;
-    [SerializeField] private RectTransform barraVida;
+    [SerializeField] private Image barraVida;
     private float vidaActual;
     public float VidaActual => vidaActual;
+
     private void Start() {
         vidaActual = vidaInicial;
     }
@@ -16,7 +18,7 @@ public class Vida : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "Bala"){
             vidaActual -= other.gameObject.GetComponent<Balas>().daño;
-            barraVida.sizeDelta = new Vector2(vidaActual / vidaInicial * barraVida.sizeDelta.x , barraVida.sizeDelta.y);
+            barraVida.fillAmount = Mathf.Lerp(barraVida.fillAmount, (vidaActual/vidaInicial)-0.2f, Time.deltaTime * 10f);
         }
     }
 }

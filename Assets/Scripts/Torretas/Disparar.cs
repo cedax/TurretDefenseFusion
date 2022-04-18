@@ -58,6 +58,8 @@ public class Disparar : MonoBehaviour
 
             audioTorreta.Disparo();
 
+            objHijoBala.GetComponent<Balas>().daño = GetComponent<StatsTorreta>().daño;
+
             Destroy(bala, 5);
         }
     }

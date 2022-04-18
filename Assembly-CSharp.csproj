@@ -39,6 +39,7 @@
      <Compile Include="Assets\Scripts\UI\ControlCalidad.cs" />
      <Compile Include="Assets\Scripts\UI\DetectarClick.cs" />
      <Compile Include="Assets\Scripts\UI\ControlTorretas.cs" />
+     <Compile Include="Assets\Scripts\UI\ControlMenu.cs" />
      <Compile Include="Assets\Scripts\Extras\Singleton.cs" />
      <Compile Include="Assets\Scripts\UI\ControlSloths.cs" />
      <Compile Include="Assets\Scripts\Extras\GizmoPivote.cs" />
@@ -54,7 +55,7 @@
      <Compile Include="Assets\Scripts\Enemigos\Vida.cs" />
      <Compile Include="Assets\Scripts\Torretas\Rotacion.cs" />
      <Compile Include="Assets\Scripts\UI\MenuPausa.cs" />
-     <Compile Include="Assets\Scripts\UI\ControlMenu.cs" />
+     <Compile Include="Assets\Scripts\Torretas\StatsTorreta.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
