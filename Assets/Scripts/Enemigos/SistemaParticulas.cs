@@ -12,18 +12,9 @@ public class SistemaParticulas : MonoBehaviour
 
     private void FixedUpdate() {
         if(vida.VidaActual <= 0){
-            _particulasDeMuerte.Play();
-            GameObject meshObject = transform.parent.gameObject.transform.parent.gameObject;
-            meshObject.SetActive(false);
-            GameObject Enemy = transform.parent.gameObject.transform.parent.gameObject.transform.parent.gameObject;
-            GameObject Canvas = Enemy.transform.GetChild(1).gameObject;
-            Canvas.SetActive(false);
-            Invoke("DestruirEnemigo", 1.2f);
+            ParticleSystem explosion = Instantiate(_particulasDeMuerte, transform.position, Quaternion.identity);
+            Destroy(explosion.gameObject, explosion.main.duration);
+            Destroy(transform.parent.gameObject.transform.parent.gameObject.transform.parent.gameObject);
         }
     }
-
-    private void DestruirEnemigo(){
-        vida.DestruirEnemigo();
-    }
-    
 }
