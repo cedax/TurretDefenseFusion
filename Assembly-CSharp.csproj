@@ -46,6 +46,7 @@
      <Compile Include="Assets\Scripts\UI\IniciarJuego.cs" />
      <Compile Include="Assets\Scripts\Torretas\Disparar.cs" />
      <Compile Include="Assets\Scripts\Torretas\AudioTorreta.cs" />
+     <Compile Include="Assets\Scripts\Torretas\StatsTorreta.cs" />
      <Compile Include="Assets\Scripts\Enemigos\SistemaParticulas.cs" />
      <Compile Include="Assets\Scripts\Torretas\Balas.cs" />
      <Compile Include="Assets\Scripts\Extras\FPS.cs" />
@@ -55,7 +56,6 @@
      <Compile Include="Assets\Scripts\Enemigos\Vida.cs" />
      <Compile Include="Assets\Scripts\Torretas\Rotacion.cs" />
      <Compile Include="Assets\Scripts\UI\MenuPausa.cs" />
-     <Compile Include="Assets\Scripts\Torretas\StatsTorreta.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

@@ -150,6 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidad: 0.04
+  particulasDeExplosion: {fileID: 8638940641552346735, guid: 46ffadbb188f9ab498b623c4290ef656, type: 3}
 --- !u!1 &2510858456983980479
 GameObject:
   m_ObjectHideFlags: 0
