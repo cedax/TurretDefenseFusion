@@ -4,6 +4,8 @@ public class DetectarClick : MonoBehaviour
 {
     [SerializeField] private GameObject torretaPrefab;
 
+    [SerializeField] private GameObject[] torretas;
+
     void Update(){
         if(ControlMenu.Instancia.Pausa == true) { return; }
 
@@ -29,21 +31,32 @@ public class DetectarClick : MonoBehaviour
 
             if(info.collider.tag == "Torreta"){
                 if(ControlTorretas.Instancia.fusionandoTorretas == true) {
-                    Debug.Log("Fusionando la torreta " + ControlTorretas.Instancia.torretaEmisora + " con la torreta " + index);
-                    
+                    if(ControlTorretas.Instancia.torretaEmisora == index) {
+                        ControlTorretas.Instancia.fusionandoTorretas = false;
+                        ControlTorretas.Instancia.desiluminarTorretas();
+                        return;
+                    }
+
                     StatsTorreta statsTorretaEmisora = ControlTorretas.Instancia.Torretas[ControlTorretas.Instancia.torretaEmisora].transform.GetChild(1).gameObject.GetComponent<StatsTorreta>();
                     StatsTorreta statsTorretaReceptora = ControlTorretas.Instancia.Torretas[index].transform.GetChild(1).gameObject.GetComponent<StatsTorreta>();
-
-                    int nuevoNivelTorreta = statsTorretaEmisora.Nivel + statsTorretaReceptora.Nivel;
+                    
+                    if(statsTorretaEmisora.Nivel != statsTorretaReceptora.Nivel){return;}
 
                     Destroy(ControlTorretas.Instancia.Torretas[ControlTorretas.Instancia.torretaEmisora]);
-
+                    Destroy(ControlTorretas.Instancia.Torretas[index]);
                     ControlTorretas.Instancia.desiluminarTorretas();
                     ControlTorretas.Instancia.fusionandoTorretas = false;
+                    GameObject nuevaTorreta = Instantiate(torretas[statsTorretaReceptora.Nivel+1], ControlTorretas.Instancia.Torretas[index].transform.position, Quaternion.identity);
+                    nuevaTorreta.name = index.ToString();
+                    ControlTorretas.Instancia.Torretas[index] = nuevaTorreta;
                 }else {
+                    StatsTorreta statsTorreta = ControlTorretas.Instancia.Torretas[index].transform.GetChild(1).gameObject.GetComponent<StatsTorreta>();
+                    if(statsTorreta.Nivel >= torretas.Length-1) {
+                        Debug.Log("El nivel maximo de torretas fue alcanzado");
+                        return;
+                    }
                     ControlTorretas.Instancia.torretaEmisora = index;
                     ControlTorretas.Instancia.fusionandoTorretas = true;
-                    StatsTorreta statsTorreta = ControlTorretas.Instancia.Torretas[index].transform.GetChild(1).gameObject.GetComponent<StatsTorreta>();
                     ControlTorretas.Instancia.iluminarTorretas(statsTorreta.Nivel);
                 }
             }

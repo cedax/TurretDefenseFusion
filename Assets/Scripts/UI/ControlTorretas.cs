@@ -31,8 +31,7 @@ public class ControlTorretas : Singleton<ControlTorretas>
                     torreta.transform.parent = espaciosTorretas.transform.GetChild(i);
                     torreta.transform.localPosition = Vector3.zero;
                     torreta.transform.localScale = new Vector3(4.5f, 2.5f, 4.5f);
-                    ControlTorretas.Instancia.torretasSeleccionadas[i] = torreta;
-                    
+                    ControlTorretas.Instancia.torretasSeleccionadas[i] = torreta;   
                 }
             }
         }

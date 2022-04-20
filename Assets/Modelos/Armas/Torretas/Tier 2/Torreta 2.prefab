@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6790693668644220301}
+  - component: {fileID: 1944084995108603741}
   m_Layer: 0
   m_Name: Torreta 2
-  m_TagString: Untagged
+  m_TagString: Torreta
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,6 +35,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1944084995108603741
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4283999723538570994}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9860774, y: 1.794262, z: 1.328346}
+  m_Center: {x: 0.006961137, y: 2.047132, z: 0.1641732}
 --- !u!1 &5424854827690305404
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,6 +189,7 @@ GameObject:
   - component: {fileID: 2466650383773954655}
   - component: {fileID: 8368413166387891683}
   - component: {fileID: 9188598202519128647}
+  - component: {fileID: 2965477828441246875}
   m_Layer: 0
   m_Name: Pivote Torreta
   m_TagString: Untagged
@@ -254,6 +269,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grados: 180
+--- !u!114 &2965477828441246875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7326904855061435681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53479d62d98dcb342bcaa625e7240c94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vidaInicial: 100
+  nivel: 2
+  "da\xF1oDeBalas": 8
 --- !u!1001 &2614651845455733419
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -2486,8 +2486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faa83f63a75f42a45be1555b86bda209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  torretas:
-  - {fileID: 0}
+  torretas: []
   seleccionarTorretaPrefab: {fileID: 8577435032895696395, guid: c5112e2d16a2fa7489d07cf272da9419, type: 3}
   espaciosTorretas: {fileID: 1128252758}
   torretasSeleccionadas: []
@@ -4290,6 +4289,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaPrefab: {fileID: 6981866808266676870, guid: 36b5af25f3d35924abd368840eba7c0a, type: 3}
+  torretas:
+  - {fileID: 0}
+  - {fileID: 6981866808266676870, guid: 36b5af25f3d35924abd368840eba7c0a, type: 3}
+  - {fileID: 4283999723538570994, guid: 86ed367c1348a7c41924b91247955175, type: 3}
+  - {fileID: 2875444589667411719, guid: aa55ec0fd43c9604ab41f0bfc322fc4f, type: 3}
+  - {fileID: 6614448975743839376, guid: 87c097357cf278d49b465c20da2707e7, type: 3}
+  - {fileID: 6545340306082650043, guid: 69fd32454244ffc44b4d7fc8873b427a, type: 3}
+  - {fileID: 3106062380223080535, guid: 248814564c9eaa145b5801d39513e16d, type: 3}
+  - {fileID: 717840274917514164, guid: 48ca754c04b2f93479ef521ee54c2676, type: 3}
+  - {fileID: 6903958607633704642, guid: b4e51852c530c4549a1dcf1ae15952ec, type: 3}
 --- !u!1001 &1154514855
 PrefabInstance:
   m_ObjectHideFlags: 0
