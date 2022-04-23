@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9619454c24a4254a9ab2508e220c1b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidad: 0.04
+  velocidad: 0.05
   particulasDeExplosion: {fileID: 8638940641552346735, guid: 46ffadbb188f9ab498b623c4290ef656, type: 3}
 --- !u!1 &2510858456983980479
 GameObject:
@@ -427,8 +427,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 16.39851, y: 14.668882, z: 13.000004}
-  m_Center: {x: 0.05038753, y: -1.5313975, z: 0.30302998}
+  m_Size: {x: 6.41838, y: 9.040534, z: 13.000004}
+  m_Center: {x: -0.22037475, y: -0.22486141, z: 0.3030299}
 --- !u!114 &5305548820093318343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,7 +441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 845e515de75c1894e8bd8aa2005800c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidaInicial: 100
+  vidaInicial: 50
   barraVida: {fileID: 1475486294603697025}
 --- !u!114 &5587843282371383663
 MonoBehaviour:

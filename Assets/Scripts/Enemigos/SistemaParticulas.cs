@@ -15,6 +15,7 @@ public class SistemaParticulas : MonoBehaviour
             ParticleSystem explosion = Instantiate(_particulasDeMuerte, transform.position, Quaternion.identity);
             Destroy(explosion.gameObject, explosion.main.duration);
             Destroy(transform.parent.gameObject.transform.parent.gameObject.transform.parent.gameObject);
+            Economia.Instancia.AgregarMonedas((int)vida.VidaInicial/2);
         }
     }
 }

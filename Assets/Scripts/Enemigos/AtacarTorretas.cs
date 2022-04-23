@@ -9,6 +9,7 @@ public class AtacarTorretas : MonoBehaviour {
 
     private void Start(){
         ObtenerTorretaObjetivo();
+        velocidad = BalanceoJuego.Instancia.multiplicadorDeVelocidad + velocidad;
     }
 
     private void ObtenerTorretaObjetivo(){
@@ -24,6 +25,9 @@ public class AtacarTorretas : MonoBehaviour {
         try{
             float distancia = Vector3.Distance(transform.position, torretaObjetivo.transform.position);
             if(distancia < 5f){
+                Vida vidaEnemigo = transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<Vida>();
+                ManagerVida.Instancia.RestarVida((int)vidaEnemigo.VidaActual/10);
+                
                 ParticleSystem explosion = Instantiate(particulasDeExplosion, transform.position, Quaternion.identity);
                 explosion.transform.position = new Vector3(explosion.transform.position.x + 2.626035f, explosion.transform.position.y, explosion.transform.position.z);
                 Destroy(explosion.gameObject, explosion.main.duration);

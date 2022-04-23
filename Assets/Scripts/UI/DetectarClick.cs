@@ -9,9 +9,11 @@ public class DetectarClick : MonoBehaviour
     void Update(){
         if(ControlMenu.Instancia.Pausa == true) { return; }
 
+        /*
         if (Input.GetMouseButtonDown(0)){
             IntantiateOnPosition(Input.mousePosition);
         }
+        */
 
         if (Input.touchCount > 0){
             Touch touch = Input.GetTouch(0);
@@ -40,7 +42,24 @@ public class DetectarClick : MonoBehaviour
                     StatsTorreta statsTorretaEmisora = ControlTorretas.Instancia.Torretas[ControlTorretas.Instancia.torretaEmisora].transform.GetChild(1).gameObject.GetComponent<StatsTorreta>();
                     StatsTorreta statsTorretaReceptora = ControlTorretas.Instancia.Torretas[index].transform.GetChild(1).gameObject.GetComponent<StatsTorreta>();
                     
-                    if(statsTorretaEmisora.Nivel != statsTorretaReceptora.Nivel){return;}
+                    if(statsTorretaEmisora.Nivel != statsTorretaReceptora.Nivel){
+                        ControlTorretas.Instancia.fusionandoTorretas = false;
+                        ControlTorretas.Instancia.desiluminarTorretas();
+                        // Nota: Solo puedes combinar torretas del mismo nivel
+                        Debug.Log("Solo puedes combinar torretas del mismo nivel");
+                        return;
+                    }
+
+                    int costoTorreta = 25*SistemaSpawn.Instancia.Oleada*statsTorretaEmisora.Nivel;
+                    if(Economia.Instancia.Balance() >= costoTorreta) {
+                        Economia.Instancia.RestarMonedas(costoTorreta);
+                    }else{
+                        ControlTorretas.Instancia.fusionandoTorretas = false;
+                        ControlTorretas.Instancia.desiluminarTorretas();
+                        // Nota: No tienes monedas suficientes para fusionar estas torretas
+                        Debug.Log("No tienes monedas suficientes para fusionar estas torretas");
+                        return;
+                    }
 
                     Destroy(ControlTorretas.Instancia.Torretas[ControlTorretas.Instancia.torretaEmisora]);
                     Destroy(ControlTorretas.Instancia.Torretas[index]);
@@ -49,6 +68,7 @@ public class DetectarClick : MonoBehaviour
                     GameObject nuevaTorreta = Instantiate(torretas[statsTorretaReceptora.Nivel+1], ControlTorretas.Instancia.Torretas[index].transform.position, Quaternion.identity);
                     nuevaTorreta.name = index.ToString();
                     ControlTorretas.Instancia.Torretas[index] = nuevaTorreta;
+
                 }else {
                     StatsTorreta statsTorreta = ControlTorretas.Instancia.Torretas[index].transform.GetChild(1).gameObject.GetComponent<StatsTorreta>();
                     if(statsTorreta.Nivel >= torretas.Length-1) {
@@ -70,6 +90,15 @@ public class DetectarClick : MonoBehaviour
                     ControlTorretas.Instancia.Torretas[index] = torreta;
                     ControlTorretas.Instancia.desiluminarTorretas();
                     ControlTorretas.Instancia.fusionandoTorretas = false;
+                    GameObject statsTorreta = ControlTorretas.Instancia.Torretas[index].transform.GetChild(1).gameObject;
+                    int costoTorreta = statsTorreta.GetComponent<StatsTorreta>().Nivel * BalanceoJuego.Instancia.costoBaseTorreta;
+                    if(Economia.Instancia.Balance() >= costoTorreta) {
+                        Economia.Instancia.RestarMonedas(costoTorreta);
+                    }else{
+                        Destroy(ControlTorretas.Instancia.Torretas[index]);
+                        // NOTA: Aviso de no tener fundos suficientes
+                        Debug.Log("No tienes monedas suficientes para construir una torreta");
+                    }
                 }
             }
         }

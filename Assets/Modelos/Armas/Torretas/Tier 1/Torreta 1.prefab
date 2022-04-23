@@ -65,7 +65,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bala: {fileID: 3628532773594262033, guid: ee225365a25c00d44b97008e3930dd6c, type: 3}
   fuerzaBala: 5000
-  velocidad: 1
+  velocidad: 0.8
   grados: 90
 --- !u!114 &6008769260797785809
 MonoBehaviour:
@@ -107,7 +107,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vidaInicial: 100
   nivel: 1
-  "da\xF1oDeBalas": 5
 --- !u!1 &6128872291713536393
 GameObject:
   m_ObjectHideFlags: 0

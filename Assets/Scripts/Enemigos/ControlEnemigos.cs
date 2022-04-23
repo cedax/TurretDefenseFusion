@@ -10,4 +10,14 @@ public class ControlEnemigos : Singleton<ControlEnemigos>
     private void Start() {
         enemigos = new List<GameObject>();
     }
+
+    private void Update() {
+        for (int i = 0; i < enemigos.Count; i++)
+        {
+            if (enemigos[i] == null)
+            {
+                enemigos.RemoveAt(i);
+            }
+        }
+    }
 }
