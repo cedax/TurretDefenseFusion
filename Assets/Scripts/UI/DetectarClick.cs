@@ -5,6 +5,7 @@ public class DetectarClick : MonoBehaviour
     [SerializeField] private GameObject torretaPrefab;
 
     [SerializeField] private GameObject[] torretas;
+    [SerializeField] private GameObject _bala;
 
     void Update(){
         if(ControlMenu.Instancia.Pausa == true) { return; }
@@ -26,6 +27,12 @@ public class DetectarClick : MonoBehaviour
     void IntantiateOnPosition(Vector3 mousePos){
         Ray ray = Camera.main.ScreenPointToRay(mousePos);
         if(Physics.Raycast(ray, out RaycastHit info)){
+            if(info.collider.tag == "EnemigoBoxTap" || info.collider.tag == "Enemigo"){
+                Economia.Instancia.RestarMonedas(1);
+                TorretaAsistidaGame.Instancia.TorretaGameObject.GetComponent<Disparar>().ObjetivoTorretaAsistida = info.collider.gameObject;
+                TorretaAsistidaGame.Instancia.TorretaGameObject.GetComponent<Disparar>().DispararBalaTorretaAsistida();
+            }
+
             int index;
             try{
                 index = int.Parse(info.collider.name);

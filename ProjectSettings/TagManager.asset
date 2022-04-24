@@ -8,6 +8,7 @@ TagManager:
   - espacioTorreta
   - Enemigo
   - Torreta
+  - EnemigoBoxTap
   layers:
   - Default
   - TransparentFX

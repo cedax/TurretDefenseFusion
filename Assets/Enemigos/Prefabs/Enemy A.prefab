@@ -112,9 +112,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4462523135328065168}
   - component: {fileID: 3922700106202638055}
+  - component: {fileID: 2356543072621492106}
   m_Layer: 0
   m_Name: Enemy A
-  m_TagString: Untagged
+  m_TagString: EnemigoBoxTap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -150,6 +151,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidad: 0.05
   particulasDeExplosion: {fileID: 8638940641552346735, guid: 46ffadbb188f9ab498b623c4290ef656, type: 3}
+--- !u!65 &2356543072621492106
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328409505970683906}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.4052992, y: 2.5911026, z: 2.000745}
+  m_Center: {x: -0.0009829998, y: 0.79555106, z: -0.17888924}
 --- !u!1 &2510858456983980479
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,6 +422,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 98a47f1cd28823f4b8ab7f52d3d506fb, type: 3}
       propertyPath: m_Name
       value: Mesh Object
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 98a47f1cd28823f4b8ab7f52d3d506fb, type: 3}
+      propertyPath: m_TagString
+      value: EnemigoBoxTap
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98a47f1cd28823f4b8ab7f52d3d506fb, type: 3}

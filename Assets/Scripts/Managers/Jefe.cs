@@ -12,6 +12,7 @@ public class Jefe : Singleton<Jefe>{
     public GameObject jefe;
     public Image barraVida;
     public Image barraVidaFondo;
+    public Image textoBoss;
     private float duration = 4f;
     private float magnitude = 0.20f;
     [SerializeField] private TextMeshProUGUI oleadasRestantes;
@@ -32,6 +33,7 @@ public class Jefe : Singleton<Jefe>{
     private void Start() {
         barraVida.enabled = false;
         barraVidaFondo.enabled = false;
+        textoBoss.enabled = false;
         contadorProximaOleadaTemp = contadorProximaOleada;
         oleadasRestantes.text = contadorProximaOleada.ToString();
     }
@@ -42,11 +44,12 @@ public class Jefe : Singleton<Jefe>{
 
     public void comenzarPelea(){
         StartCoroutine(Shake());
-        Vibrar.Vibrate((long)((duration)-2f*1000));
+        Vibrar.Vibrate((long)((duration-2f)*1000));
         InvokeRepeating("bajarLuces", 0, 0.3f);
         InvokeRepeating("DispararMisil", 0, 2f+BalanceoJuego.Instancia.JefesSuperados/10);
         barraVida.enabled = true;
         barraVidaFondo.enabled = true;
+        textoBoss.enabled = true;
     }
 
     private void OnEnable() {
@@ -76,6 +79,10 @@ public class Jefe : Singleton<Jefe>{
             SistemaSpawn.Instancia.peleaConJefe = false;
             SistemaSpawn.Instancia.oleadaEnCurso = false;
             Jefe.Instancia.contadorProximaOleada = 5;
+            if (AnuncioBonificado.Instancia.interstitial.IsLoaded()) {
+                Debug.Log("Anuncio cargado");
+                AnuncioBonificado.Instancia.interstitial.Show();
+            }
         }
     }
 
@@ -83,6 +90,7 @@ public class Jefe : Singleton<Jefe>{
         barraVida.fillAmount = 1;
         barraVida.enabled = false;
         barraVidaFondo.enabled = false;
+        textoBoss.enabled = false;
         CancelInvoke("bajarLuces");
         CancelInvoke("DispararMisil");
         InvokeRepeating("SubirLuces", 0, 0.3f);
