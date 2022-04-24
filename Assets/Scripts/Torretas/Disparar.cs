@@ -28,8 +28,14 @@ public class Disparar : MonoBehaviour
             VelocidadAnterior = velocidad;
         }
 
+        if(SistemaSpawn.Instancia.peleaConJefe){
+            try{
+                _target = Jefe.Instancia.jefe.gameObject;
+            }catch{}
+        }
+        
+        // Nota Quitar: Dejar el _Target como blanco cuando se elimine el Jefe
         if(_target == null){ ElegirEnemigo(); }
-
         rotacion.RotarTorreta(_target);
     }
 
@@ -39,12 +45,13 @@ public class Disparar : MonoBehaviour
             _target = ControlEnemigos.Instancia.Enemigos[index];
         }
         catch (System.Exception){
-            // Debug.Log("Aun no hay enemigos para atacar");
+            // Nota: Aun no hay enemigos para atacar
         }
     }
 
     private void DispararBala(){
         if(_target != null) {
+            if(SistemaSpawn.Instancia.peleaConJefe && !Jefe.Instancia.LucesListas){return;}
             Vector3 objetivoRotation = new Vector3(_target.transform.position.x, _target.transform.position.y + 2f, _target.transform.position.z) - transform.position;
             Quaternion ObjetivoDireccionQuaternion = Quaternion.LookRotation(objetivoRotation);
             GameObject bala = Instantiate(_bala, transform.position, ObjetivoDireccionQuaternion);

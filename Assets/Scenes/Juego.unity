@@ -1976,7 +1976,8 @@ MonoBehaviour:
   costoBaseTorreta: 100
   enemigosBase: 4
   multiplicadorDeVelocidad: 0
-  "multiplicadorDeDa\xF1oMisil": 2
+  "multiplicadorDeDa\xF1oMisil": 0.5
+  JefesSuperados: 0
 --- !u!4 &587617901
 Transform:
   m_ObjectHideFlags: 0
@@ -6167,7 +6168,11 @@ MonoBehaviour:
   - {fileID: 328409505970683906, guid: ea6b16d55a352c348841e466f84ad20c, type: 3}
   textoOleada: {fileID: 301289784}
   spawnJefe: {fileID: 55569285}
+  spawnJefeParticulas: {fileID: 8638940641552346735, guid: d0e22915f26804b4091ab06f522cd127, type: 3}
   cantidadEnemigos: 1
+  peleaConJefe: 0
+  oleadaEnCurso: 0
+  puedeSpawnear: 0
 --- !u!65 &1543435944
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6255,6 +6260,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: c9cfba535676c5746aea07a0f248194b, type: 3}
   m_PrefabInstance: {fileID: 1551529537}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1560131271 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 177201575, guid: b0c26564d47403b4cb1d692721e5d7eb, type: 3}
+  m_PrefabInstance: {fileID: 4691731232564388063}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1562927401
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6465,6 +6481,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: c9cfba535676c5746aea07a0f248194b, type: 3}
   m_PrefabInstance: {fileID: 1630555023}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1633729695 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1633729695, guid: b0c26564d47403b4cb1d692721e5d7eb, type: 3}
+  m_PrefabInstance: {fileID: 4691731232564388063}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1636878252
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6963,6 +6990,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 0001ef2c9558aba49a7eb3ef1ad3b64d, type: 3}
   m_PrefabInstance: {fileID: 1712716789}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1741221672 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7089648415036483390, guid: b0c26564d47403b4cb1d692721e5d7eb, type: 3}
+  m_PrefabInstance: {fileID: 4691731232564388063}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1762857854
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7362,16 +7400,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e0f71a38b93a3547aa46cb491c5432f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  contadorProximaOleada: 0
   luz: {fileID: 705507994}
   camara: {fileID: 963194227}
   misil: {fileID: 3533313218899643882, guid: 50e7f7cd6a4e20544803ae9978a43ec5, type: 3}
-  jefe: {fileID: 55569285}
-  puntosDeControlMisil:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  spawnJefe: {fileID: 55569285}
+  LucesListas: 0
+  jefe: {fileID: 0}
+  barraVida: {fileID: 1633729695}
+  barraVidaFondo: {fileID: 1741221672}
+  oleadasRestantes: {fileID: 1560131271}
 --- !u!1001 &1858157598
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8756,10 +8794,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 455892330}
-    - target: {fileID: 1803226803, guid: b0c26564d47403b4cb1d692721e5d7eb, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 4446527857967357378, guid: b0c26564d47403b4cb1d692721e5d7eb, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bb2d45c4ba6e39a4f93b200d14ef10a2, type: 3}
     - target: {fileID: 4691731233629047315, guid: b0c26564d47403b4cb1d692721e5d7eb, type: 3}
       propertyPath: m_Pivot.x
       value: 0

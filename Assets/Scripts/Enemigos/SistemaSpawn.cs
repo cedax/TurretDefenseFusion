@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System;
 
 public class SistemaSpawn : Singleton<SistemaSpawn>
 {
@@ -8,17 +9,20 @@ public class SistemaSpawn : Singleton<SistemaSpawn>
     [SerializeField] private GameObject[] modelosEnemigos;
     [SerializeField] private TextMeshProUGUI textoOleada;
     [SerializeField] private GameObject spawnJefe;
+    [SerializeField] private ParticleSystem spawnJefeParticulas;
     [Header("Parametros")]
+    public Action EventoComenzarPelea;
     public int cantidadEnemigos;
-    private bool peleaConJefe;
+    public bool peleaConJefe;
     public int Oleada {get; private set;}
-    private bool oleadaEnCurso;
-    bool puedeSpawnear;
+    public bool oleadaEnCurso;
+    public bool puedeSpawnear;
     bool primeraOleadaEjecutada;
 
     private void Start()
     {
         Oleada = 1;
+        Jefe.Instancia.contadorProximaOleada = 4;
         oleadaEnCurso = false;
         puedeSpawnear = false;
         textoOleada.text = Oleada.ToString();
@@ -31,8 +35,9 @@ public class SistemaSpawn : Singleton<SistemaSpawn>
             oleadaEnCurso = false;
             puedeSpawnear = false;
             Oleada++;
+            Jefe.Instancia.contadorProximaOleada --;
             textoOleada.text = Oleada.ToString();
-            BalanceoJuego.Instancia.multiplicadorDeVelocidad += 0.001f;
+            BalanceoJuego.Instancia.multiplicadorDeVelocidad += 0.0005f;
         }
 
         if(!puedeSpawnear){
@@ -44,19 +49,23 @@ public class SistemaSpawn : Singleton<SistemaSpawn>
         }
 
         if(puedeSpawnear && !oleadaEnCurso){
-            //if (Oleada % 10 == 0 && !oleadaEnCurso) {
-            if (Oleada == 2 && !oleadaEnCurso) {
+            if (Oleada % 5 == 0 && !oleadaEnCurso) {
                 oleadaEnCurso = true;
-                puedeSpawnear = true;
+                puedeSpawnear = false;
                 peleaConJefe = true;
+
                 GameObject enemigo = Instantiate(modelosEnemigos[3], spawnJefe.transform.position, Quaternion.identity);
                 enemigo.transform.Rotate(new Vector3(0, 90, 0));
-                
-                Jefe.Instancia.comenzarPelea();
-            }else{
+                ParticleSystem particulasSpawn = Instantiate(spawnJefeParticulas, spawnJefe.transform.position, Quaternion.identity);
+                spawnJefeParticulas.Play();
+                Destroy(particulasSpawn.gameObject, particulasSpawn.main.duration);
+                Jefe.Instancia.jefe = enemigo;
+                EventoComenzarPelea?.Invoke(); 
+            }else if(!peleaConJefe){
                 int cantidadEnemigosCalculado = BalanceoJuego.Instancia.enemigosBase*Oleada;
-                cantidadEnemigos = Random.Range(cantidadEnemigosCalculado, cantidadEnemigosCalculado+2);
+                cantidadEnemigos = UnityEngine.Random.Range(cantidadEnemigosCalculado, cantidadEnemigosCalculado+2);
                 oleadaEnCurso = true;
+                puedeSpawnear = false;
                 Spawn();
             }
         }
@@ -76,10 +85,10 @@ public class SistemaSpawn : Singleton<SistemaSpawn>
         }
 
         for (int i = 0; i < cantidadEnemigos; ++i){
-            Vector3 posicion = new Vector3(Random.Range(areaSpawn.transform.position.x - areaSpawn.transform.localScale.x / 2, areaSpawn.transform.position.x + areaSpawn.transform.localScale.x / 2),
+            Vector3 posicion = new Vector3(UnityEngine.Random.Range(areaSpawn.transform.position.x - areaSpawn.transform.localScale.x / 2, areaSpawn.transform.position.x + areaSpawn.transform.localScale.x / 2),
                                             areaSpawn.transform.position.y,
-                                            Random.Range(areaSpawn.transform.position.z - areaSpawn.transform.localScale.z / 2, areaSpawn.transform.position.z + areaSpawn.transform.localScale.z / 2));
-            GameObject enemigo = Instantiate(modelosEnemigos[Random.Range(0, rangoMaximo)], posicion, Quaternion.identity);
+                                            UnityEngine.Random.Range(areaSpawn.transform.position.z - areaSpawn.transform.localScale.z / 2, areaSpawn.transform.position.z + areaSpawn.transform.localScale.z / 2));
+            GameObject enemigo = Instantiate(modelosEnemigos[UnityEngine.Random.Range(0, rangoMaximo)], posicion, Quaternion.identity);
             enemigo.transform.Rotate(new Vector3(0, 90, 0));
             ControlEnemigos.Instancia.Enemigos.Add(enemigo);
         }
