@@ -9,6 +9,7 @@ public class BalanceoJuego : Singleton<BalanceoJuego>{
     private float promedioDaño;
     public int enemigosBase;
     public float multiplicadorDeVelocidad;
+    public float multiplicadorVelocidadDisparo;
     public float multiplicadorDeDañoMisil;
     public int JefesSuperados;
     public void calcularDañoPorSegundo(){
@@ -23,6 +24,7 @@ public class BalanceoJuego : Singleton<BalanceoJuego>{
     }
 
     private void Start() {
+        multiplicadorVelocidadDisparo = 0;
         InvokeRepeating("calcularDañoPorSegundo", 1f, 1f);
     }
 

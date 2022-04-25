@@ -28,9 +28,19 @@ public class DetectarClick : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(mousePos);
         if(Physics.Raycast(ray, out RaycastHit info)){
             if(info.collider.tag == "EnemigoBoxTap" || info.collider.tag == "Enemigo"){
-                Economia.Instancia.RestarMonedas(1);
-                TorretaAsistidaGame.Instancia.TorretaGameObject.GetComponent<Disparar>().ObjetivoTorretaAsistida = info.collider.gameObject;
-                TorretaAsistidaGame.Instancia.TorretaGameObject.GetComponent<Disparar>().DispararBalaTorretaAsistida();
+                if(Economia.Instancia.Monedas > 1){
+                    Economia.Instancia.RestarMonedas(1);
+                    TorretaAsistidaGame.Instancia.TorretaGameObject.GetComponent<Disparar>().ObjetivoTorretaAsistida = info.collider.gameObject;
+                    TorretaAsistidaGame.Instancia.TorretaGameObject.GetComponent<Disparar>().DispararBalaTorretaAsistida();
+                }
+            }
+
+            if(info.collider.tag == "AumentarVelocidadTorretas"){
+                info.collider.gameObject.GetComponent<PowerUpVelocidadTorreta>().AumentarVelocidadDeTorretas();
+            }
+
+            if(info.collider.tag == "CurarVida"){
+                info.collider.gameObject.GetComponent<PowerUpCurar>().Curar();
             }
 
             int index;
@@ -52,8 +62,7 @@ public class DetectarClick : MonoBehaviour
                     if(statsTorretaEmisora.Nivel != statsTorretaReceptora.Nivel){
                         ControlTorretas.Instancia.fusionandoTorretas = false;
                         ControlTorretas.Instancia.desiluminarTorretas();
-                        // Nota: Solo puedes combinar torretas del mismo nivel
-                        Debug.Log("Solo puedes combinar torretas del mismo nivel");
+                        Notificacion.Instancia.Nueva("Solo puedes combinar torretas del mismo nivel");
                         return;
                     }
 
@@ -63,8 +72,7 @@ public class DetectarClick : MonoBehaviour
                     }else{
                         ControlTorretas.Instancia.fusionandoTorretas = false;
                         ControlTorretas.Instancia.desiluminarTorretas();
-                        // Nota: No tienes monedas suficientes para fusionar estas torretas
-                        Debug.Log("No tienes monedas suficientes para fusionar estas torretas");
+                        Notificacion.Instancia.Nueva("Necesitas " + (costoTorreta - Economia.Instancia.Balance()) + " monedas mas");
                         return;
                     }
 
@@ -79,7 +87,7 @@ public class DetectarClick : MonoBehaviour
                 }else {
                     StatsTorreta statsTorreta = ControlTorretas.Instancia.Torretas[index].transform.GetChild(1).gameObject.GetComponent<StatsTorreta>();
                     if(statsTorreta.Nivel >= torretas.Length-1) {
-                        Debug.Log("El nivel maximo de torretas fue alcanzado");
+                        Notificacion.Instancia.Nueva("El nivel maximo de torretas fue alcanzado");
                         return;
                     }
                     ControlTorretas.Instancia.torretaEmisora = index;
@@ -103,8 +111,7 @@ public class DetectarClick : MonoBehaviour
                         Economia.Instancia.RestarMonedas(costoTorreta);
                     }else{
                         Destroy(ControlTorretas.Instancia.Torretas[index]);
-                        // NOTA: Aviso de no tener fundos suficientes
-                        Debug.Log("No tienes monedas suficientes para construir una torreta");
+                        Notificacion.Instancia.Nueva("Nececitas " + (costoTorreta - Economia.Instancia.Balance()) + " monedas mas");
                     }
                 }
             }

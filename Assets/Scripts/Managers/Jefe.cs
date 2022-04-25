@@ -79,10 +79,12 @@ public class Jefe : Singleton<Jefe>{
             SistemaSpawn.Instancia.peleaConJefe = false;
             SistemaSpawn.Instancia.oleadaEnCurso = false;
             Jefe.Instancia.contadorProximaOleada = 5;
+            /*
             if (AnuncioBonificado.Instancia.interstitial.IsLoaded()) {
                 Debug.Log("Anuncio cargado");
                 AnuncioBonificado.Instancia.interstitial.Show();
             }
+            */
         }
     }
 

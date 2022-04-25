@@ -68,6 +68,9 @@
      <Compile Include="Assets\Scripts\Anuncios\AnuncioBonificado.cs" />
      <Compile Include="Assets\Scripts\Torretas\TorretaAsistida.cs" />
      <Compile Include="Assets\Scripts\Torretas\TorretaAsistidaGame.cs" />
+     <Compile Include="Assets\Scripts\Managers\Notificacion.cs" />
+     <Compile Include="Assets\Scripts\Power Ups\PowerUpVelocidadTorreta.cs" />
+     <Compile Include="Assets\Scripts\Power Ups\PowerUpCurar.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\GoogleMobileAds\GoogleMobileAds_version-7.0.0_manifest.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />

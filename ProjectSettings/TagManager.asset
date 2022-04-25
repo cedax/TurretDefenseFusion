@@ -9,6 +9,8 @@ TagManager:
   - Enemigo
   - Torreta
   - EnemigoBoxTap
+  - AumentarVelocidadTorretas
+  - CurarVida
   layers:
   - Default
   - TransparentFX
