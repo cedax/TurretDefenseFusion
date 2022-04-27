@@ -6,12 +6,12 @@ public class BalanceoJuego : Singleton<BalanceoJuego>{
     public float dañoHechoPorSegundo;
     public float maximoDañoHechoPorSegundo;
     public int costoBaseTorreta;
-    private float promedioDaño;
     public int enemigosBase;
     public float multiplicadorDeVelocidad;
     public float multiplicadorVelocidadDisparo;
     public float multiplicadorDeDañoMisil;
     public int JefesSuperados;
+    public bool Particulas;
     public void calcularDañoPorSegundo(){
         if (dañoHechoPorSegundo > maximoDañoHechoPorSegundo) {
             maximoDañoHechoPorSegundo = dañoHechoPorSegundo;

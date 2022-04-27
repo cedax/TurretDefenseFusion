@@ -84,6 +84,8 @@ public class SistemaSpawn : Singleton<SistemaSpawn>
             rangoMaximo = 2;
         }
 
+        if(cantidadEnemigos > 80){cantidadEnemigos = 100; BalanceoJuego.Instancia.multiplicadorDeVelocidad += 0.0008f;}
+        
         for (int i = 0; i < cantidadEnemigos; ++i){
             Vector3 posicion = new Vector3(UnityEngine.Random.Range(areaSpawn.transform.position.x - areaSpawn.transform.localScale.x / 2, areaSpawn.transform.position.x + areaSpawn.transform.localScale.x / 2),
                                             areaSpawn.transform.position.y,

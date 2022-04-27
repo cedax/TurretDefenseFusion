@@ -27,10 +27,11 @@ public class AtacarTorretas : MonoBehaviour {
             if(distancia < 5f){
                 Vida vidaEnemigo = transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<Vida>();
                 ManagerVida.Instancia.RestarVida((int)vidaEnemigo.VidaActual/10);
-                
-                ParticleSystem explosion = Instantiate(particulasDeExplosion, transform.position, Quaternion.identity);
-                explosion.transform.position = new Vector3(explosion.transform.position.x + 2.626035f, explosion.transform.position.y, explosion.transform.position.z);
-                Destroy(explosion.gameObject, explosion.main.duration);
+                if(BalanceoJuego.Instancia.Particulas){
+                    ParticleSystem explosion = Instantiate(particulasDeExplosion, transform.position, Quaternion.identity);
+                    explosion.transform.position = new Vector3(explosion.transform.position.x + 2.626035f, explosion.transform.position.y, explosion.transform.position.z);
+                    Destroy(explosion.gameObject, explosion.main.duration);
+                }
                 Destroy(gameObject);
             }else {
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(torretaObjetivo.transform.position.x, 1, torretaObjetivo.transform.position.z), velocidad);
@@ -42,3 +43,5 @@ public class AtacarTorretas : MonoBehaviour {
         }
     }
 }
+
+// Nota: Limitar larvas

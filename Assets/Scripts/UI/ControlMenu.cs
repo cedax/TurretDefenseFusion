@@ -85,6 +85,12 @@ public class ControlMenu : Singleton<ControlMenu>{
     }
 
     public void CambiarCalidad(int calidad){
+        Debug.Log(calidad);
+        if(calidad == 0){
+            BalanceoJuego.Instancia.Particulas = false;
+        }else{
+            BalanceoJuego.Instancia.Particulas = true;
+        }
         QualitySettings.SetQualityLevel(calidad);
         PlayerPrefs.SetInt("numeroDeCalidad", calidad);
     }

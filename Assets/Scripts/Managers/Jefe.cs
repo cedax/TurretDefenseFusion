@@ -44,7 +44,7 @@ public class Jefe : Singleton<Jefe>{
 
     public void comenzarPelea(){
         StartCoroutine(Shake());
-        Vibrar.Vibrate((long)((duration-2f)*1000));
+        Vibrar.Vibrate((long)800f);
         InvokeRepeating("bajarLuces", 0, 0.3f);
         InvokeRepeating("DispararMisil", 0, 2f+BalanceoJuego.Instancia.JefesSuperados/10);
         barraVida.enabled = true;
@@ -79,6 +79,7 @@ public class Jefe : Singleton<Jefe>{
             SistemaSpawn.Instancia.peleaConJefe = false;
             SistemaSpawn.Instancia.oleadaEnCurso = false;
             Jefe.Instancia.contadorProximaOleada = 5;
+            Economia.Instancia.AgregarMonedas(Random.Range(1500, 2500));
             /*
             if (AnuncioBonificado.Instancia.interstitial.IsLoaded()) {
                 Debug.Log("Anuncio cargado");

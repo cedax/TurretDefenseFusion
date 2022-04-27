@@ -5,8 +5,10 @@ public class MisilJefe : MonoBehaviour{
 
     private void OnTriggerEnter(Collider other){
         if (other.gameObject.tag == "Torreta"){
-            ParticleSystem particulasExplosion = Instantiate(explosionMisil, transform.position, Quaternion.identity);
-            Destroy(particulasExplosion.gameObject, explosionMisil.main.duration);
+            if(BalanceoJuego.Instancia.Particulas){
+                ParticleSystem particulasExplosion = Instantiate(explosionMisil, transform.position, Quaternion.identity);
+                Destroy(particulasExplosion.gameObject, explosionMisil.main.duration);
+            }
             Destroy(gameObject);
             ManagerVida.Instancia.RestarVida((int)(SistemaSpawn.Instancia.Oleada*BalanceoJuego.Instancia.multiplicadorDeDañoMisil));
         }

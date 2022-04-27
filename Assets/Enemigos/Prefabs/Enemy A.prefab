@@ -474,6 +474,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particulasDeMuerte: {fileID: 712400879296273390, guid: be16a2ead503d12418c1f228fcee2f7c, type: 3}
+  powerUpVida: {fileID: 690041606357937042, guid: 437ad4dccfddbb64b9b2bb88be07abe4, type: 3}
+  powerUpVelocidad: {fileID: 5626598509938386498, guid: 5f990ffaa293ab14ebc81ec38b817d0b, type: 3}
 --- !u!4 &4936069009611974378 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 98a47f1cd28823f4b8ab7f52d3d506fb, type: 3}
