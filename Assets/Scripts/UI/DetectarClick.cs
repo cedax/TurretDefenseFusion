@@ -107,6 +107,9 @@ public class DetectarClick : MonoBehaviour
                     ControlTorretas.Instancia.fusionandoTorretas = false;
                     GameObject statsTorreta = ControlTorretas.Instancia.Torretas[index].transform.GetChild(1).gameObject;
                     int costoTorreta = statsTorreta.GetComponent<StatsTorreta>().Nivel * BalanceoJuego.Instancia.costoBaseTorreta;
+                    if(BalanceoJuego.Instancia.multiplicadorVelocidadDisparo != 0){
+                        statsTorreta.GetComponent<Disparar>().velocidad = statsTorreta.GetComponent<Disparar>().velocidad * BalanceoJuego.Instancia.multiplicadorVelocidadDisparo;
+                    }
                     if(Economia.Instancia.Balance() >= costoTorreta) {
                         Economia.Instancia.RestarMonedas(costoTorreta);
                     }else{

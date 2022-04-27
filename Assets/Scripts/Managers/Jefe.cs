@@ -80,12 +80,6 @@ public class Jefe : Singleton<Jefe>{
             SistemaSpawn.Instancia.oleadaEnCurso = false;
             Jefe.Instancia.contadorProximaOleada = 5;
             Economia.Instancia.AgregarMonedas(Random.Range(1500, 2500));
-            /*
-            if (AnuncioBonificado.Instancia.interstitial.IsLoaded()) {
-                Debug.Log("Anuncio cargado");
-                AnuncioBonificado.Instancia.interstitial.Show();
-            }
-            */
         }
     }
 

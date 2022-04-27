@@ -4,7 +4,7 @@ public class Disparar : MonoBehaviour
 {
     [SerializeField] private GameObject _bala;
     [SerializeField] [Range(0, 7500)] private int fuerzaBala = 3000;
-    [SerializeField] [Range(0.1f, 10)] private float velocidad = 1;
+    public float velocidad = 1;
     [SerializeField] private float grados;
     private float VelocidadAnterior = 1;
     private GameObject _target;

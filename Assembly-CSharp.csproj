@@ -73,6 +73,10 @@
      <Compile Include="Assets\Scripts\Enemigos\Vida.cs" />
      <Compile Include="Assets\Scripts\Torretas\Rotacion.cs" />
      <Compile Include="Assets\Scripts\UI\MenuPausa.cs" />
+     <Compile Include="Assets\Scripts\UI\GameOver.cs" />
+     <Compile Include="Assets\Scripts\Anuncios\Backup.cs" />
+     <Compile Include="Assets\Scripts\Managers\NotificacionAnuncios.cs" />
+     <Compile Include="Assets\Scripts\Managers\AnunciosMonedas.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\GoogleMobileAds\GoogleMobileAds_version-7.0.0_manifest.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />

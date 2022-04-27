@@ -3,6 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager> {
     public void PerderJuego(){
-        SceneManager.LoadScene("GameOver");
+        GameOver.Instancia.Perdiste();
     }
 }

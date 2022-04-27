@@ -43,5 +43,3 @@ public class AtacarTorretas : MonoBehaviour {
         }
     }
 }
-
-// Nota: Limitar larvas
